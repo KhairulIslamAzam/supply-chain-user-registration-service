@@ -1,0 +1,4 @@
+#database:
+#  url: jdbc:postgresql://172.16.229.205:5432/unet_corporate_db?currentSchema=unet_corporate
+#  username: uneteb
+#  password: uneteb@!23

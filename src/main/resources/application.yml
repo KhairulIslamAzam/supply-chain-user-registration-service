@@ -1,0 +1,32 @@
+
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: dealer registration service
+  lifecycle:
+    timeout-per-shutdown-phase: "90s"
+  datasource:
+    url: jdbc:postgresql://localhost:5432/supply_chain_management_db
+    username: postgres
+    password: 104498Azam
+    hikari:
+      connectionTimeout: 30000
+      maximumPoolSize: 20
+      minimum-idle: 10
+      idle-timeout: 10000
+      max-lifetime: 1800000
+      auto-commit: true
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+server:
+  port: 8087
+
