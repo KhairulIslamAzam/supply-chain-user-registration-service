@@ -1,0 +1,72 @@
+#server:
+#  port: 5080
+#
+#eureka:
+#  instance:
+#    port: ${EUREKA_PORT:8761}
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
+
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://instance-1.eureka.com:8761/eureka/, http://instance-2.eureka.com:8762/eureka/, http://instance-3.eureka.com:8763/eureka/
+
+spring:
+#  sleuth:
+#    sampler:
+#      probability: 1.0
+#  zipkin:
+#    base-url: http://172.16.229.128:9411
+#    sender:
+#      type: web
+  datasource:
+    url: jdbc:oracle:thin:@//172.16.229.127:1521/FLEXCUBE
+    username: CITY_REMITTANCE_USER_UAT
+    password: CityRemit2022
+
+#redis:
+#  host: 172.16.229.128
+#  port: 6379
+#  password: cblmt@123
+#  pool:
+#    max:
+#      connection: 30
+#      idle:
+#        connection: 10
+#    min:
+#      idle:
+#        connection: 0
+
+jwt:
+  token:
+    expiry:
+      minute: 30
+  secret:
+    key: bs@2#L
+
+image:
+  secret:
+    key: bs@2#I
+
+password:
+  strength: 11
+
+feign:
+  httpclient:
+    max-connections: 200
+    max-connections-per-route: 200
+  client:
+    config:
+      default:
+        connectTimeout: 120000
+        readTimeout: 60000
+        requestIntreceptors:
+          - com.brainstation23.auth.rest.interceptor.FeignClientRequestInterceptor
+
+logging:
+  config: classpath:log/logback-dev.xml
+
+url:
+  base: http://103.4.146.91:8081

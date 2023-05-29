@@ -1,0 +1,66 @@
+server:
+  port: 0
+  shutdown: graceful
+
+#log:
+#  dir: auth
+
+
+#redis:
+#  database:
+#    index: 8
+#
+#eureka:
+#  instance:
+#    preferIpAddress: true
+#    leaseRenewalIntervalInSeconds: 5
+#    leaseExpirationDurationInSeconds: 10
+#    instance-id: ${spring.application.name}:${random.value}
+#  client:
+#    fetch-registry: true
+#    registry-fetch-interval-seconds: 3
+
+spring:
+  config:
+#    import: ./urls/urls.yml
+  profiles:
+    active: test
+  application:
+    name: auth-service
+  lifecycle:
+    timeout-per-shutdown-phase: "90s"
+  datasource:
+    hikari:
+      maximum-pool-size: 9
+  jpa:
+    database-platform: oracle.jdbc.OracleDriver
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.Oracle12cDialect
+        jdbc:
+          time_zone: UTC
+  sql:
+    init:
+      mode: always
+      continue-on-error: true
+  liquibase:
+    enabled: false
+
+jwt:
+  token:
+    prefix: Bearer
+
+http:
+  header:
+    auth: Authorization
+#    country: Country-Code
+#    country-id: Country-Id
+#    language: Accept-Language
+#    userType: User-Type
+
+springdoc:
+  paths-to-exclude: /swagger-resources/**, /v3/api-docs/**, /v2/api-docs/**
