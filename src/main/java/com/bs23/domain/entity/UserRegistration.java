@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -33,4 +34,10 @@ public class UserRegistration extends BaseEntity implements Serializable {
     @Lob
     @Column(name = "NID_IMAGE")
     private String nidImageBase64;
+    @Column(name = "temp_block_date")
+    private Date tempBlockDate;
+    @Column(name = "temp_unblock_date")
+    private Date tempUnblockDate;
+    @Column(name = "BAD_LI_ATTEMPT")
+    private Integer badLoginAttempt;
 }

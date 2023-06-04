@@ -20,6 +20,11 @@ public class UserToken extends BaseEntity implements Serializable {
 
   @Column(name = "TOKEN")
   private String token;
+  @Column(name = "EXPIRE_ON")
+  private Date expireOn;
+
+  @Column(name = "REQUEST_IP")
+  private String requestIp;
 
   @Column(name = "isLogOut")
   private boolean isLogOut = Boolean.FALSE;
